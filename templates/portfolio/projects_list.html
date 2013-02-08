@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+
+<html xmlns="http://www.w3.org/1999/xhtml">  
+
+  <head>  
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+
+    <title>Project List</title>  
+
+  </head>  
+
+  <body>  
+
+{% block title %}Work{% endblock %}
+
+{% block content %}
+<ul class="projects-list">
+  {% for object in object_list %}
+  {% if object.is_public %}
+  {% load markup %}
+
+  <li class="project">
+    <h3 class="name">{{ object.name }}</h3>
+    <a class="lead-image url" href="{{ object.project_url }}">
+      <span class="more">View work</span>
+      <img src="{{ object.overview_image }}" alt="" />
+    </a>
+    <div class="description">
+      {{ object.summary|textile }}
+     </div>
+     <dl class="meta">
+      <dt>Completed</dt>
+      <dd>{{ object.completion_date|date:"F Y" }}
+       {% if object.in_development %}
+        <span class="quiet">(in development)</span>
+       {% endif %}
+      </dd>
+     </dl>
+   </li>
+  {% endif %}
+ {% endfor %}
+</ul>
+{% endblock %}
+
+  </body>  
+
+</html>

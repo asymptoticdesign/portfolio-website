@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>About Me</h1>
+
+    <p>I am a computational designer at <a href="http://www.n-e-r-v-o-u-s.com/">Nervous System</a>, where we use algorithms inspired by natura phenomena to generatively design products using digital fabrication.</p>
+
+    <p>Before my current job, I was a student at the Massachusetts Institute of Technology (twice!).  As an undergraduate I focused in Physics while researching quantum computations architectures; as a Masters student I studied Electrical Engineering and Computer Science while researching remote control stimulation of neurons using radio waves.</p>
+
+    <p>My interests are multi-disciplinary, but primarily focus on instrumentation, control, and digital fabrication.  Other interests of mine include generative processes, physical computing, and artificial intelligence.</p>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script type="application/javascript" src="{{ STATIC_URL }}/particle-emitter.js"></script>
+<script type="application/javascript" src="{{ STATIC_URL }}/perlin-noise-simplex.js"></script>
+
+<div onclick="setup();">
+<canvas id="banner" width="800" height="300"></canvas>
+</div>
+
+{% endblock %}

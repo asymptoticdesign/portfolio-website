@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>AsymptoticDesign</title>
+    <!-- <meta name="description" content="A library for the Processing programming environment" />
+	 <meta name="keywords" content="processing.org, library, surfacemapper, projection mapping, projection, bezier surface, quad surface" />
+	 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	 <meta http-equiv="Content-Language" content="en-us" />
+	 <meta name="ROBOTS" content="index,follow,archive" />
+	 <meta http-equiv="imagetoolbar" content="false" />
+	 <meta name="MSSmartTagsPreventParsing" content="true" />
+	 <meta name="author" content="Ixagon" />
+	 <meta name="Rating" content="General" />
+	 <meta name="revisit-after" content="7 Days" />
+	 <meta name="doc-class" content="Living Document" />
+	 -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style.css">
+<!--
+      <script type="application/javascript" src="./particle-emitter.js"></script>
+      <script type="application/javascript" src="./perlin-noise-simplex.js"></script>
+-->
+    </head>
+    
+    <body onload="setup()">
+      <div id="container">
+	
+	<div id="header">
+	  <p id="title"><a href='/index/'><h1>AsymptoticDesign</h1></a></p>
+<!--	  <canvas id="banner" width="800" height="100"></canvas>	  -->
+	</div>
+	
+	<div id="menu" class="clear">
+	  <ul>	
+	    <li><a href="/about">About</a> \ </li>
+	    <li><a href="/blog">Blog</a> \ </li>
+	    <li><a href="/science">Science</a> \ </li>
+	    <li><a href="/art">Art</a> \ </li>
+	    <li><a href="/technology">Technology</a> \ </li>
+	  </ul>
+	</div>
+	
+	<div id="content" class="clear">
+	  {% block content %}
+	  {% endblock %}
+	</div>
+	
+	<div id="footer">
+	  <div id="footer-left">
+	    
+	    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="All content is licensed under a Creative Commons BY-SA 3.0 License." style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+	  </div>
+	  
+	  <div id="footer-center">
+	    &copy; Nathan S Lachenmyer 2012
+	  </div>
+	  
+	  <div id="footer-right">
+	    <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+	  </div>
+	</div>
+      </body>
+    </html>
