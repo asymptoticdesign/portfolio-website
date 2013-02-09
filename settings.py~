@@ -1,6 +1,4 @@
 # Django settings for website project.
-import sys
-sys.path.append("/usr/lib/python2.7/dist-packages/basic")
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -127,7 +125,7 @@ INSTALLED_APPS = (
 #    'syncr.twitter',
 #    'syncr.flickr',
     'portfolio',
-    'basic.blog',
+    'blog',
 )
 
 # A sample logging configuration. The only tangible logging
