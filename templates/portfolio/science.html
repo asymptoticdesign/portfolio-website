@@ -6,9 +6,9 @@
 
 <ul class="projects-list">
   {% for project in object_list %}
-  {% if project.is_public and project.project_type == 'S' %}
+  {% if project.status == 2 and project.project_type == project.SCI_CAT %}
   
-  {% include "portfolio/project_listing.html" %}
+  {% include "portfolio/project_summary.html" %}
   
   {% endif %}
   {% endfor %}

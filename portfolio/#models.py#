@@ -39,7 +39,7 @@ class Project(models.Model):
     
     title = models.CharField(max_length=256)
     slug = models.SlugField()
-    summary = models.CharField(max_length=512)
+    summary = models.Char
     overview_image = models.URLField()
     description = models.TextField(blank=True)
     start_date = models.DateField()

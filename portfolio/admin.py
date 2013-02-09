@@ -1,9 +1,12 @@
-from portfolio.models import Tag, Project
+from portfolio.models import Category, Project
 from django.contrib import admin
 
 class ProjectAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("name",)}
+    prepopulated_fields = {"slug": ("title",)}
+
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     
 admin.site.register(Project,ProjectAdmin)
 #admin.site.register(Client)
-admin.site.register(Tag)
+admin.site.register(Category)
