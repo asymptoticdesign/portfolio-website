@@ -34,6 +34,7 @@ class Entry(models.Model):
     body = models.TextField()
     publish_date = models.DateTimeField(default=datetime.datetime.now)
     slug = models.SlugField()
+#    overview_image = models.URLField(blank=True)
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT_STATUS)
