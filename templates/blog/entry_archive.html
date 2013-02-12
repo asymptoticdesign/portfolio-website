@@ -4,11 +4,9 @@
 
 <ul>
   {% for entry in latest %}
-  {% if entry.status == entry.LIVE_STATUS %}
   
   {% include "blog/entry_summary.html" %}
   
-  {% endif %}
   {% endfor %}
 </ul>
 
