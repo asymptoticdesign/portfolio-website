@@ -2,11 +2,9 @@
 
 {% block content %}
 
-<p>These are public blog entries.</p>
-
 <ul>
-  {% for object in object_list %}
-  {% if object.status == object.LIVE_STATUS %}
+  {% for entry in latest %}
+  {% if entry.status == entry.LIVE_STATUS %}
   
   {% include "blog/entry_summary.html" %}
   

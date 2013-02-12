@@ -2,8 +2,14 @@
 
 {% block content %}
 
-<h2>{{ object.title }}</h2>
-<p>Published on {{ object.publish_date }}</p>
-<p>{{ object.body }}</p>
+<ul>
+  {% for entry in object_list %}
+  {% if entry.status == entry.LIVE_STATUS %}
+  
+  {% include "blog/entry_summary.html" %}
+  
+  {% endif %}
+  {% endfor %}
+</ul>
 
 {% endblock %}

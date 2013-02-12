@@ -17,14 +17,22 @@ entry_info_dict = {
     'date_field': 'publish_date',
     }
 
+entry_info_year_dict = {
+    'queryset': Entry.objects.all(),
+    'date_field': 'publish_date',
+    'make_object_list': True,
+    }
+
 urlpatterns = patterns('',
     ('^admin/', include(admin.site.urls)),
     ('^$', direct_to_template, {'template': 'index.html'}),
     ('^about/$', direct_to_template, {'template': 'about.html'}),
-   ('^blog/$', 'blog.views.entry_list'),
-    #('^blog/$', 'django.views.generic.date_based.archive_index', entry_info_dict),
+    #('^blog/$', 'blog.views.entry_list'),
+    ('^blog/$', 'django.views.generic.date_based.archive_index', entry_info_dict),
+    ('^blog/(?P<year>\d{4})/$','django.views.generic.date_based.archive_year',entry_info_year_dict),
+    ('^blog/(?P<year>\d{4})/(?P<month>\w{3})/$','django.views.generic.date_based.archive_month',entry_info_dict),                   
+    ('^blog/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/$','django.views.generic.date_based.archive_day',entry_info_dict),
     ('^blog/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$','django.views.generic.date_based.object_detail',entry_info_dict),
-
     ('^science/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/science.html")),
     ('^art/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/art.html")),
     ('^technology/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/technology.html")),
