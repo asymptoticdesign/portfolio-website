@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul>
+  {% for entry in object_list %}
+  
+  {% include "blog/link_summary.html" %}
+  
+  {% endfor %}
+</ul>
+
+{% endblock %}

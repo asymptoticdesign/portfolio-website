@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Latest Blog Entries</h2>
+
+<p>These are public blog entries.</p>
 
 <ul>
-  {% for entry in latest %}
+  {% for entry in entry_list %}
+  {% if entry.status == entry.LIVE_STATUS %}
   
   {% include "blog/entry_summary.html" %}
   
+  {% endif %}
   {% endfor %}
 </ul>
 

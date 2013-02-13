@@ -1,8 +1,6 @@
+import datetime
 from django.db import models
-
-PROJECT_CATEGORY = (('S','Science'),
-                    ('A','Art'),
-                    ('T','Technology'))
+from tagging.fields import TagField
 
 class Category(models.Model):
     title = models.CharField(max_length=256)
@@ -27,7 +25,8 @@ class Project(models.Model):
     STATUS_CHOICES = (
         (DRAFT_STATUS, 'Draft'),
         (HIDDEN_STATUS, 'Hidden'),
-        (LIVE_STATUS, 'Live'))
+        (LIVE_STATUS, 'Live')
+        )
 
     SCI_CAT = 0
     ART_CAT = 1
@@ -35,18 +34,26 @@ class Project(models.Model):
     PROJECT_CATEGORY = (
         (SCI_CAT,'Science'),
         (ART_CAT,'Art'),
-        (TECH_CAT,'Technology'))
+        (TECH_CAT,'Technology')
+        )
 
+    #preview
     title = models.CharField(max_length=256)
     slug = models.SlugField()
     summary = models.CharField(max_length=512)
     overview_image = models.URLField()
-    description = models.TextField(blank=True)
     start_date = models.DateField()
     completion_date = models.DateField(blank=True)
+
+    #in-depth information
+    media = models.TextField(blank=True,help_text='Place flickr galleries, vimeo playlists, or interactive demos here')
+    description = models.TextField(blank=True,help_text='Place the main body text here')
+    resources = models.TextField(blank=True,help_text='Downloadable resources and external links go here')
+
+    #meta_data
     status = models.IntegerField(choices=STATUS_CHOICES)
     project_type = models.IntegerField(choices=PROJECT_CATEGORY)
-    categories = models.ManyToManyField(Category)
+    tags = TagField()
 
     class Meta:
         ordering = ['-completion_date']

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul>
+  {% for entry in object_list %}
+  {% if entry.status == entry.LIVE_STATUS %}
+  
+  {% include "blog/link_summary.html" %}
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+
+{% endblock %}
