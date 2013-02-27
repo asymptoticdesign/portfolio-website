@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}\ Entries{% endblock %}
+
+{% block content %}
+<div id="blog-content">
+  {% block blog-content %}
+  {% endblock %}
+</div>
+<div id="sidebar">
+  <h2>Navigation</h2>
+  <ul id="main-nav">
+    <li id="main-nav-entries">
+      Entries
+    </li>
+    <li id="main-nav-tags">
+      Tags
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

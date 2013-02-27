@@ -46,6 +46,8 @@ class Project(models.Model):
     completion_date = models.DateField(blank=True)
 
     #in-depth information
+    #vimeoid = models.IntegerField(blank=True,help_text='Place vimeo album id here')
+    #flickrid = models.IntegerField(blank=True,help_text='Place flickr set id here')
     media = models.TextField(blank=True,help_text='Place flickr galleries, vimeo playlists, or interactive demos here')
     description = models.TextField(blank=True,help_text='Place the main body text here')
     resources = models.TextField(blank=True,help_text='Downloadable resources and external links go here')
