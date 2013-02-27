@@ -1,6 +1,6 @@
 {% extends "blog/base_entry.html" %}
 
-{% block title %}{{ block.super }}\ {{ day }}{% endblock %}
+{% block title %}{{ block.super }} \ {{ day|date:"Y \\\ F \\\ j" }}{% endblock %}
 
 {% block blog-content %}
 

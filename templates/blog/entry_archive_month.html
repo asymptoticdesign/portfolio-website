@@ -1,7 +1,6 @@
 {% extends "blog/base_entry.html" %}
 
-{% block title %}{{ block.super }}\ {{ year }}{% endblock %}
-
+{% block title %}{{ block.super }} \ {{ month|date:"Y \\\ F" }}  {% endblock %}
 {% block blog-content %}
 
 <ul>

@@ -1,16 +1,15 @@
 {% extends "blog/base_entry.html" %}
 
-{% block title %}{{ block.super }} \ {{ year }}{% endblock %}
+{% block title %}{{ block.super }} \ Latest{% endblock %}
 
 {% block blog-content %}
+<h2>Latest Blog Entries</h2>
 
 <ul>
-  {% for entry in object_list %}
-  {% if entry.status == entry.LIVE_STATUS %}
+  {% for entry in latest %}
   
   {% include "blog/entry_summary.html" %}
   
-  {% endif %}
   {% endfor %}
 </ul>
 
