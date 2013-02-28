@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ project.title }}</h2>
+
+{% if project.javascript %}
+<script type="application/javascript" src="{{ STATIC_URL }}{{ project.javscript }}"></script>
+<div class="project_javascript">
+  <canvas id="demo" width="800" height="600" onclick="setup();"></canvas>
+</div>
+{% endif %}
+
+{% if project.flickrid %}
+<div class="project_flickr">
+
+</div>
+{% endif %}
+
+{% if project.vimeoid %}
+<script type="text/css" href="{{ STATIC_URL }}vimeo.css">
+<div class="project_vimeo">
+  <div id="badge">
+    <div class="vimeoBadge horizontal">
+      <!-- substitute album # in here -->
+      <script src="https://vimeo.com/asymptoticdesign/badgeo/?script=1&badge_layout=horizontal&badge_quantity=5&badge_size=80&badge_stream=album&show_titles=no&badge_album={{ project.vimeoid }}"></script>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="project_details">
+  <h2 class="title">{{ project.title }}</h2>
+  <p class="date"> {{ project.date }} </p>
+  <p class="description"> {{ project.summary }} </p>
+</div>
+
+{% endblock %}

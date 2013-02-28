@@ -2,20 +2,20 @@ import datetime
 from django.db import models
 from tagging.fields import TagField
 
-class Category(models.Model):
-    title = models.CharField(max_length=256)
-    slug = models.SlugField(unique=True,help_text="Suggested value automatically generated from title. Must be unique.")
-    description = models.TextField()
+#class Category(models.Model):
+#    title = models.CharField(max_length=256)
+#    slug = models.SlugField(unique=True,help_text="Suggested value automatically generated from title. Must be unique.")
+#    description = models.TextField()
 
-    class Meta:
-        verbose_name_plural = "categories"
-        ordering = ['title']
+#    class Meta:
+#        verbose_name_plural = "categories"
+#        ordering = ['title']
 
-    class Admin:
-        pass
+#    class Admin:
+#        pass
 
-    def __str__(self):
-        return self.title
+#    def __str__(self):
+#        return self.title
 
 class Project(models.Model):
     #constants
@@ -48,9 +48,10 @@ class Project(models.Model):
     #in-depth information
     vimeoid = models.IntegerField(blank=True,help_text='Place vimeo album id here')
     flickrid = models.IntegerField(blank=True,help_text='Place flickr set id here')
-    media = models.TextField(blank=True,help_text='Place flickr galleries, vimeo playlists, or interactive demos here')
+    javascript = models.CharField(blank=True,max_length=512,help_text='Place javascript filename here for interactive demo')
+    source = models.URLField(blank=True,help_text='URL for source materials (github, zip file, etc.')
+    contributors = models.TextField(blank=True,help_text='Place any credits and contributors here')
     description = models.TextField(blank=True,help_text='Place the main body text here')
-    resources = models.TextField(blank=True,help_text='Downloadable resources and external links go here')
 
     #meta_data
     status = models.IntegerField(choices=STATUS_CHOICES)

@@ -12,7 +12,7 @@ admin.autodiscover()
 
 portfolio_dict = {
     'queryset': Project.objects.filter(status=Project.LIVE_STATUS),
-}
+    }
 
 entry_info_dict = {
     'queryset': Entry.objects.filter(status=Entry.LIVE_STATUS),
@@ -39,7 +39,7 @@ link_info_year_dict = {
 feeds = {
     'posts': LatestEntries,
     'links': LatestLinks,
-      }
+    }
 
 #blog urls patterns
 urlpatterns = patterns('',
@@ -66,8 +66,11 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     ('^projects/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/project_list.html")),
     ('^projects/science/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/science.html")),
+    ('^projects/science/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/project_detail.html")),
     ('^projects/art/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/art.html")),
+    ('^projects/art/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_detail', dict(portfolio_dict, slug_field=slug, template_name="portfolio/project_detail.html")),
     ('^projects/technology/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/technology.html")),
+    ('^projects/technology/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/project_detail.html")),
     )
 
 #tag related patterns
