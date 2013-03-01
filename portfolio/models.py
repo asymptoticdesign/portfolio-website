@@ -48,7 +48,7 @@ class Project(models.Model):
     #in-depth information
     vimeoid = models.IntegerField(blank=True,help_text='Place vimeo album id here')
     flickrid = models.IntegerField(blank=True,help_text='Place flickr set id here')
-    javascript = models.CharField(blank=True,max_length=512,help_text='Place javascript filename here for interactive demo')
+    javascript = models.TextField(blank=True,max_length=512,help_text='Place javascript here for interactive demo')
     source = models.URLField(blank=True,help_text='URL for source materials (github, zip file, etc.')
     contributors = models.TextField(blank=True,help_text='Place any credits and contributors here')
     description = models.TextField(blank=True,help_text='Place the main body text here')

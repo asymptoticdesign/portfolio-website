@@ -68,7 +68,7 @@ urlpatterns += patterns('',
     ('^projects/science/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/science.html")),
     ('^projects/science/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/project_detail.html")),
     ('^projects/art/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/art.html")),
-    ('^projects/art/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_detail', dict(portfolio_dict, slug_field=slug, template_name="portfolio/project_detail.html")),
+    ('^projects/art/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_detail', dict(portfolio_dict, slug_field='slug', template_name="portfolio/project_detail.html")),
     ('^projects/technology/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/technology.html")),
     ('^projects/technology/(?P<slug>[-\w]+)/$', 'django.views.generic.list_detail.object_list', dict(portfolio_dict, template_name="portfolio/project_detail.html")),
     )

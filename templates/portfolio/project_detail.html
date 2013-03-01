@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ project.title }}</h2>
+<h2>{{ object.title }}</h2>
 
-{% if project.javascript %}
-<script type="application/javascript" src="{{ STATIC_URL }}{{ project.javascript }}"></script>
+{% if object.javascript %}
+<script type="application/javascript" src="{{ STATIC_URL }}{{ object.javascript }}"></script>
 <div class="project_javascript">
   <canvas id="demo" width="800" height="600" onclick="setup();"></canvas>
 </div>
 {% endif %}
 
-{% if project.flickrid %}
+{% if object.flickrid %}
 <style>
 .project_flickr {
   width: 800px;
@@ -26,8 +26,8 @@
   'interval' : 10000,
   'page' : 1,
   'per_page' : 10,
-  'user':'69679282@N06'
-  'set' : '{{ project.flickrid }}'
+  'user':'69679282@N06',
+  'set' : '{{ object.flickrid }}'
   });
 </script>
 
@@ -36,22 +36,22 @@
 </div>
 {% endif %}
 
-{% if project.vimeoid %}
+{% if object.vimeoid %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vimeo.css">
 <div class="project_vimeo">
   <div id="badge">
     <div class="vimeoBadge horizontal">
       <!-- substitute album # in here -->
-      <script src="https://vimeo.com/asymptoticdesign/badgeo/?script=1&badge_layout=horizontal&badge_quantity=5&badge_size=80&badge_stream=album&show_titles=no&badge_album={{ project.vimeoid }}"></script>
+      <script src="https://vimeo.com/asymptoticdesign/badgeo/?script=1&badge_layout=horizontal&badge_quantity=5&badge_size=80&badge_stream=album&show_titles=no&badge_album={{ object.vimeoid }}"></script>
     </div>
   </div>
 </div>
 {% endif %}
-
+OB
 <div class="project_details">
-  <h2 class="title">{{ project.title }}</h2>
-  <p class="date"> {{ project.date }} </p>
-  <p class="description"> {{ project.summary }} </p>
+  <h2 class="title">{{ object.title }}</h2>
+  <p class="date"> {{ object.date }} </p>
+  <p class="description"> {{ object.summary }} </p>
 </div>
 
 {% endblock %}
