@@ -2,6 +2,17 @@
 
 {% block title %}{{ block.super }} \ {{ object.title }}  {% endblock %}
 
+{% block thispost %}
+  Filed under:
+  {% for tag in object.get_tags %}
+    {% if forloop.last %}
+      <a href="/blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+    {% else %}
+      <a href="/blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>,
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
 {% block blog-content %}
 
 <h2>{{ object.title }}</h2>

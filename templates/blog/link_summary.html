@@ -3,5 +3,15 @@
   <div class="link_date">Published on {{ entry.publish_date }}</div>
   <div class="link_summary">{{ entry.summary }}</div>
   <div class="link_image"></div>
+  <div class="link_tags">
+    Filed under:
+    {% for tag in object.get_tags %}
+    {% if forloop.last %}
+    <a href="/art-blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+    {% else %}
+    <a href="/art-blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>,
+    {% endif %}
+    {% endfor %}
+  </div>
   <div class="link_url"><a href="{{ entry.get_absolute_url }}">Read full entry</a></div>
 </div>

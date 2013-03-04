@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from tagging.fields import TagField
+from tagging.models import Tag
 
 #class Category(models.Model):
 #    title = models.CharField(max_length=256)
@@ -32,15 +33,15 @@ class Project(models.Model):
     ART_CAT = 1
     TECH_CAT = 2
     PROJECT_CATEGORY = (
-        (SCI_CAT,'Science'),
-        (ART_CAT,'Art'),
-        (TECH_CAT,'Technology')
+        (SCI_CAT,'science'),
+        (ART_CAT,'art'),
+        (TECH_CAT,'technology')
         )
 
     #preview
     title = models.CharField(max_length=256)
     slug = models.SlugField()
-    summary = models.CharField(max_length=512)
+    summary = models.TextField(help_text="Place the summary (preview) text here.")
     overview_image = models.URLField()
     start_date = models.DateField()
     completion_date = models.DateField(blank=True)
@@ -67,5 +68,8 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def get_tags(self):
+        return Tag.objects.get_for_object(self) 
+
     def get_absolute_url(self):
-        return "/work/%s/%s/" % (self.PROJECT_CATEGORY[status][1], self.slug)
+        return "/projects/%s/%s/" % (self.PROJECT_CATEGORY[self.project_type][1], self.slug)

@@ -75,9 +75,9 @@ urlpatterns += patterns('',
 
 #tag related patterns
 urlpatterns += patterns('',
-    (r'^tags/$','django.views.generic.list_detail.object_list',{'queryset': Tag.objects.all()}),
-    (r'^tags/entries/(?P<tag>[-\w]+)/$','tagging.views.tagged_object_list',{'queryset_or_model': Entry,'template_name': 'tagged_entries.html'}),
-    (r'^tags/links/(?P<tag>[-\w]+)/$','tagging.views.tagged_object_list',{'queryset_or_model': Link,'template_name': 'tagged_links.html'}),
+    (r'^blog/tags/(?P<tag>[-\w]+)/$','tagging.views.tagged_object_list',{'queryset_or_model': Entry,'template_name': 'blog/tagged_entries.html'}),
+    (r'^art-blog/tags/(?P<tag>[-\w]+)/$','tagging.views.tagged_object_list',{'queryset_or_model': Link,'template_name': 'blog/tagged_links.html'}),
+    (r'^projects/tags/(?P<tag>[-\w]+)/$','tagging.views.tagged_object_list',{'queryset_or_model': Project,'template_name': 'portfolio/tagged_projects.html'}),
     )
 
 #rss feed patterns

@@ -4,7 +4,7 @@
 <h2>{{ object.title }}</h2>
 
 {% if object.javascript %}
-<script type="application/javascript" src="{{ STATIC_URL }}{{ object.javascript }}"></script>
+{{ object.javascript|safe }}
 <div class="project_javascript">
   <canvas id="demo" width="800" height="600" onclick="setup();"></canvas>
 </div>
@@ -18,16 +18,16 @@
 }
 </style>
 
-<script src="javascript.flickrshow/flickrshow-7.2.js"></script>
+<script type="application/javascript" src="/static/javascript.flickrshow/flickrshow-7.2.min.js"></script>
 
-<script>
+<script type="application/javascript">
   var demo = new flickrshow('project_flickr', {
   'autoplay' : true,
   'interval' : 10000,
   'page' : 1,
   'per_page' : 10,
-  'user':'69679282@N06',
-  'set' : '{{ object.flickrid }}'
+  'user':'69679282@N06'
+  <!--'set' : '{{ object.flickrid }}'-->
   });
 </script>
 
@@ -37,7 +37,7 @@
 {% endif %}
 
 {% if object.vimeoid %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vimeo.css">
+<link rel="stylesheet" type="text/css" href="/static/vimeo.css">
 <div class="project_vimeo">
   <div id="badge">
     <div class="vimeoBadge horizontal">
@@ -47,10 +47,10 @@
   </div>
 </div>
 {% endif %}
-OB
+
 <div class="project_details">
   <h2 class="title">{{ object.title }}</h2>
-  <p class="date"> {{ object.date }} </p>
+  <p class="date"> {{ object.start_date }} </p>
   <p class="description"> {{ object.summary }} </p>
 </div>
 

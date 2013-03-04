@@ -7,16 +7,22 @@
   {% block blog-content %}
   {% endblock %}
 </div>
+
 <div id="sidebar">
   <h2>Navigation</h2>
-  <ul id="main-nav">
-    <li id="main-nav-entries">
-      Entries
+  {% block thispost %}
+  {% endblock %}
+
+  <ul id="blog-nav">
+    <li id="blog-nav-entries">
+      <h3>Archives</h3>
     </li>
-    <li id="main-nav-tags">
-      Tags
+
+    <li id="blog-nav-tags">
+      <h3>Tags</h3>
     </li>
   </ul>
+
 </div>
 
 {% endblock %}

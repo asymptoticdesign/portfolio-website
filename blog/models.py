@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from tagging.fields import TagField
+from tagging.models import Tag
 from django.conf import settings
 
 class Category(models.Model):
@@ -67,6 +68,9 @@ class Entry(models.Model):
                 api.PostUpdate(twitter_text)
         super(Entry, self).save()
 
+    def get_tags(self):
+        return Tag.objects.get_for_object(self) 
+
     def get_absolute_url(self):
         return "/blog/%s/%s/" % (self.publish_date.strftime("%Y/%b/%d").lower(), self.slug)
 
@@ -103,7 +107,7 @@ class Link(models.Model):
     enable_comments = models.BooleanField(default=True)
     post_delicious = models.BooleanField('Post to Delicious', default=True, help_text='If checked, this will be posted both to your blog and to your delicious.com account. (Currently disabled)')
     post_twitter = models.BooleanField('Post to Twitter', default=False, help_text='If checked, this will be posted both to your blog and to your twitter account. (Currently disabled)')
-    twitter_text = models.CharField(blank=True,max_length=144,help_text="This is the text that will be sent as a twitter status.")
+    twitter_text = models.CharField(blank=True,max_length=140,help_text="This is the text that will be sent as a twitter status.")
 
     class Meta:
         ordering = ['-publish_date']
@@ -130,6 +134,9 @@ class Link(models.Model):
                                   access_token_secret=settings.TWITTER_TOKEN_SECRET)
                 api.PostUpdate(twitter_text)
             super(Link, self).save()
+
+    def get_tags(self):
+        return Tag.objects.get_for_object(self) 
 
     def get_absolute_url(self):
         return "/links/%s/%s/" % (self.publish_date.strftime("%Y/%b/%d").lower(), self.slug)
