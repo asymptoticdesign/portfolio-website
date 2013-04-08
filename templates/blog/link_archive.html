@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Latest links</h2>
+
+<ul>
+  {% for entry in latest %}
+  
+  {% include "blog/link_summary.html" %}
+  
+  {% endfor %}
+</ul>
+
+{% endblock %}

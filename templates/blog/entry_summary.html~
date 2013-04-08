@@ -1,0 +1,5 @@
+
+<h2>{{ entry.title }}</h2>
+<p>Published on {{ entry.publish_date }}</p>
+<p>{{ entry.summary }}</p>
+<p><a href="{{ entry.get_absolute_url }}">Read full entry</a></p>

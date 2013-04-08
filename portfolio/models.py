@@ -1,46 +1,75 @@
+import datetime
 from django.db import models
+from tagging.fields import TagField
+from tagging.models import Tag
 
-PROJECT_CATEGORY = (('S','Science'),
-                    ('A','Art'),
-                    ('T','Technology'))
+#class Category(models.Model):
+#    title = models.CharField(max_length=256)
+#    slug = models.SlugField(unique=True,help_text="Suggested value automatically generated from title. Must be unique.")
+#    description = models.TextField()
 
-class Tag(models.Model):
-    name = models.CharField(max_length=256)
-    
-    class Meta:
-        db_table = "portfolio_tags"
-        verbose_name_plural = "tags"
-        ordering = ['name']
+#    class Meta:
+#        verbose_name_plural = "categories"
+#        ordering = ['title']
 
-    class Admin:
-        pass
-    
-    def __str__(self):
-        return self.name
-    
+#    class Admin:
+#        pass
+
+#    def __str__(self):
+#        return self.title
+
 class Project(models.Model):
-    name = models.CharField(max_length=256)
+    #constants
+    DRAFT_STATUS = 0
+    HIDDEN_STATUS = 1
+    LIVE_STATUS = 2
+    STATUS_CHOICES = (
+        (DRAFT_STATUS, 'Draft'),
+        (HIDDEN_STATUS, 'Hidden'),
+        (LIVE_STATUS, 'Live')
+        )
+
+    SCI_CAT = 0
+    ART_CAT = 1
+    TECH_CAT = 2
+    PROJECT_CATEGORY = (
+        (SCI_CAT,'science'),
+        (ART_CAT,'art'),
+        (TECH_CAT,'technology')
+        )
+
+    #preview
+    title = models.CharField(max_length=256)
     slug = models.SlugField()
-    project_type = models.CharField(max_length=1, choices=PROJECT_CATEGORY)
-    project_url = models.URLField('Project URL')
-    summary = models.CharField(max_length=512)
-    description = models.TextField(blank=True)
-    tags = models.ManyToManyField(Tag)
-#    date_started = models.DateField()
-#    date_completed = models.DateField()
-    completion_date = models.DateField()
-    is_public = models.BooleanField(default=False)
+    summary = models.TextField(help_text="Place the summary (preview) text here.")
     overview_image = models.URLField()
-    
+    start_date = models.DateField()
+    completion_date = models.DateField(blank=True)
+
+    #in-depth information
+    vimeoid = models.IntegerField(blank=True,help_text='Place vimeo album id here')
+    flickrid = models.IntegerField(blank=True,help_text='Place flickr set id here')
+    javascript = models.TextField(blank=True,max_length=512,help_text='Place javascript here for interactive demo')
+    source = models.URLField(blank=True,help_text='URL for source materials (github, zip file, etc.')
+    contributors = models.TextField(blank=True,help_text='Place any credits and contributors here')
+    description = models.TextField(blank=True,help_text='Place the main body text here')
+
+    #meta_data
+    status = models.IntegerField(choices=STATUS_CHOICES)
+    project_type = models.IntegerField(choices=PROJECT_CATEGORY)
+    tags = TagField()
+
     class Meta:
-        db_table = "projects"
         ordering = ['-completion_date']
-     
+
     class Admin:
         pass
-        
+
     def __str__(self):
-        return self.name
-    
+        return self.title
+
+    def get_tags(self):
+        return Tag.objects.get_for_object(self) 
+
     def get_absolute_url(self):
-        return "/work/%s/" % self.slug
+        return "/projects/%s/%s/" % (self.PROJECT_CATEGORY[self.project_type][1], self.slug)

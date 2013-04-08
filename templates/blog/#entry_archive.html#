@@ -1,0 +1,16 @@
+{% extends "blog/base_entry.html" %}
+
+{% block title %}{{ block.super }} \ Latest{% endblock %}
+
+{% block blog-content %}
+<h2>Latest Blog Entries</h2>
+
+<ul>
+  {% for entry in latest %}
+  
+  {% include "blog/entry_summary.html" %}
+  
+  {% endfor %}
+</ul>
+
+{% endblock %}

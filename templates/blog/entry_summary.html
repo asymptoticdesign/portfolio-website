@@ -1,0 +1,17 @@
+<div class="blog_entry">
+  <h2 class="blog_title">{{ entry.title }}</h2>
+  <div class="blog_date">Published on {{ entry.publish_date }}</div>
+  <div class="blog_summary">{{ entry.summary }}</div>
+  <div class="blog_image"></div>
+  <div class="blog_tags">Filed under: 
+    Filed under:
+    {% for tag in object.get_tags %}
+    {% if forloop.last %}
+    <a href="/blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+    {% else %}
+    <a href="/blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>,
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="blog_url"><a href="{{ entry.get_absolute_url }}">Read full entry</a></div>
+</div>

@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>Released Technology</h2>
 
 <p>These projects consist of technology (hardware or software) that I have created and want to share.  All hardware and software on this page is released under a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.en_US'>Creative Commons BY-SA 3.0 license</a>.</p>
 
 <ul class="projects-list">
   {% for project in object_list %}
-  {% if project.is_public and project.project_type == 'T' %}
+  {% if project.status == 2 and project.project_type == project.TECH_CAT %}
   
-  {% include "portfolio/project_listing.html" %}
+  {% include "portfolio/project_summary.html" %}
   
   {% endif %}
   {% endfor %}

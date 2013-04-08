@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>These are public blog entries.</p>
+
+<ul>
+  {% for entry in entry_list %}
+  {% if entry.status == entry.LIVE_STATUS %}
+  
+  {% include "blog/entry_summary.html" %}
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+
+{% endblock %}

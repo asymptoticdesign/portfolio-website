@@ -1,0 +1,17 @@
+{% extends "blog/base_entry.html" %}
+
+{% block title %}{{ block.super }} \ {{ day|date:"Y \\\ F \\\ j" }}{% endblock %}
+
+{% block blog-content %}
+
+<ul>
+  {% for entry in object_list %}
+  {% if entry.status == entry.LIVE_STATUS %}
+  
+  {% include "blog/entry_summary.html" %}
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>Art</h2>
 
 <p>These are projects of mine that I consider art.  They serve no purpose other than as a creative outlet; I simply wanted to create something beautiful to share with others.</p>
 
 <ul class="projects-list">
   {% for project in object_list %}
-  {% if project.is_public and project.project_type == 'A' %}
+  {% if project.status == 2 and project.project_type == project.ART_CAT %}
   
-  {% include "portfolio/project_listing.html" %}
+  {% include "portfolio/project_summary.html" %}
   
   {% endif %}
   {% endfor %}
