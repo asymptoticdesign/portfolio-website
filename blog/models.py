@@ -5,21 +5,6 @@ from tagging.fields import TagField
 from tagging.models import Tag
 from django.conf import settings
 
-class Category(models.Model):
-    title = models.CharField(max_length=250,help_text="Maximum 250 characters")
-    slug = models.SlugField(unique=True,help_text="Suggested value automatically generated from title. Must be unique.")
-    description = models.TextField()
-
-    class Meta:
-        ordering = ['title']
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return "/categories/%s/" % self.slug
-
 class Entry(models.Model):
     #constants
     DRAFT_STATUS = 0
@@ -38,8 +23,7 @@ class Entry(models.Model):
     summary = models.TextField()
     publish_date = models.DateTimeField(default=datetime.datetime.now)
     status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT_STATUS)
-#    categories = models.ManyToManyField(Category)
-    overview_image = models.URLField()
+    overview_image = models.URLField(verify_exists=False)
     body = models.TextField()
 
     tags = TagField()
@@ -94,7 +78,6 @@ class Link(models.Model):
     publish_date = models.DateTimeField(default=datetime.datetime.now)
     
     #metadata 
-    categories = models.ManyToManyField(Category)
     tags = TagField()
     via_name = models.CharField('Via', max_length=250, blank=True, help_text='The name of the person whose site you spotted the link on. Optional.')
     via_url = models.URLField('Via URL', blank=True, help_text='The URL of the site where you spotted the link. Optional.')

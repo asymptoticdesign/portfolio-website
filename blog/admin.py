@@ -1,8 +1,5 @@
 from django.contrib import admin
-from models import Category, Entry, Link
-
-class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = { 'slug': ['title'] }
+from models import Entry, Link
 
 class LinkAdmin(admin.ModelAdmin):
     prepopulated_fields = { 'slug': ['title'] }
@@ -14,4 +11,3 @@ class EntryAdmin(admin.ModelAdmin):
     
 admin.site.register(Link, LinkAdmin)
 admin.site.register(Entry, EntryAdmin)
-admin.site.register(Category, CategoryAdmin)

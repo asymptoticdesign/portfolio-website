@@ -2,9 +2,8 @@
   <h2 class="blog_title">{{ entry.title }}</h2>
   <div class="blog_date">Published on {{ entry.publish_date }}</div>
   <div class="blog_summary">{{ entry.summary }}</div>
-  <div class="blog_image"></div>
+  <div class="blog_image"><img src="{{ entry.overview_image }}"></div>
   <div class="blog_tags">Filed under: 
-    Filed under:
     {% for tag in object.get_tags %}
     {% if forloop.last %}
     <a href="/blog/tags/{{ tag }}" alt="{{ tag }}" title="{{ tag }}">{{ tag }}</a>
